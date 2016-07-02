@@ -1,6 +1,7 @@
 import fs from 'fs';
 import {extend} from 'underscore';
-import gulpWebpack from 'webpack-stream';
+
+let gulpWebpack;
 
 class WebpackTask extends Elixir.Task {
 
@@ -19,6 +20,14 @@ class WebpackTask extends Elixir.Task {
         if (fs.existsSync('webpack.config.js')) {
             this.webpackConfig = require(process.cwd()+'/webpack.config.js');
         }
+    }
+
+
+    /**
+     * Lazy load the task dependencies.
+     */
+    loadDependencies() {
+        gulpWebpack = require('webpack-stream');
     }
 
 
