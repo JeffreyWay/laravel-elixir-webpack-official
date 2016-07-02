@@ -1,4 +1,4 @@
-import JavaScriptTask from '../JavaScriptTask';
+import WebpackTask from './WebpackTask';
 
 /*
  |----------------------------------------------------------------
@@ -18,7 +18,7 @@ Elixir.extend('webpack', function(scripts, output, baseDir, options) {
         ]
     };
 
-    new JavaScriptTask(
+    new WebpackTask(
         'webpack', getPaths(scripts, baseDir, output), options
     );
 });

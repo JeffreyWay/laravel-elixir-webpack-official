@@ -2,7 +2,7 @@
   "name": "laravel-elixir-webpack-official",
   "version": "1.0.0",
   "description": "Laravel Elixir Webpack integration",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "compile": "babel --presets=es2015 -d dist src",
     "prepublish": "npm run compile"
