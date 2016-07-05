@@ -11,13 +11,15 @@ import WebpackTask from './WebpackTask';
  |
  */
 
-Elixir.extend('webpack', function(scripts, output, baseDir, options) {
-    Elixir.config.js.webpack = {
-        loaders: [
-            { test: /\.js$/, loader: 'buble' }
-        ]
-    };
+Elixir.config.js.webpack = {
+    loaders: [
+        { test: /\.js$/, loader: 'buble' }
+    ],
+    babel: {}
+};
 
+
+Elixir.extend('webpack', function(scripts, output, baseDir, options) {
     new WebpackTask(
         'webpack', getPaths(scripts, baseDir, output), options
     );
