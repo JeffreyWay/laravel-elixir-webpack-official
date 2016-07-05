@@ -16,8 +16,8 @@
   "author": "Jeffrey Way",
   "license": "MIT",
   "dependencies": {
-    "buble": "^0.7.0",
-    "buble-loader": "^0.2.1",
+    "buble": "^0.12.0",
+    "buble-loader": "^0.2.2",
     "underscore": "^1.8.3",
     "webpack": "^2.1.0-beta.15",
     "webpack-stream": "^3.2.0"
