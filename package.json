@@ -3,6 +3,11 @@
   "version": "1.0.2",
   "description": "Laravel Elixir Webpack integration",
   "main": "dist/index.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/JeffreyWay/laravel-elixir-webpack-official.git"
+  },
+  "homepage": "https://github.com/JeffreyWay/laravel-elixir-webpack-official",
   "scripts": {
     "compile": "babel --presets=es2015 -d dist src",
     "prepublish": "npm run compile"
