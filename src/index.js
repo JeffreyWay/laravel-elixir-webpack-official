@@ -19,7 +19,6 @@ Elixir.webpack = {
         module: {
             loaders: [{ test: /\.js$/, loader: 'buble' }]
         },
-        babel: {},
         stats: {
             assets: false,
             version: false
