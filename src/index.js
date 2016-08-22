@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { mergeWith, isArray } from 'lodash';
 import WebpackTask from './WebpackTask';
 
 /*
@@ -26,8 +26,8 @@ Elixir.webpack = {
     },
 
     mergeConfig(newConfig) {
-        return this.config = _.mergeWith(this.config, newConfig, (objValue, srcValue) => {
-            if (_.isArray(objValue)) {
+        return this.config = mergeWith(this.config, newConfig, (objValue, srcValue) => {
+            if (isArray(objValue)) {
                 return objValue.concat(srcValue);
             }
         });
