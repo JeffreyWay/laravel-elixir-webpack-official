@@ -18,7 +18,7 @@ class WebpackTask extends Elixir.Task {
         this.options = options;
 
         if (fs.existsSync('webpack.config.js')) {
-            this.webpackConfig = require(process.cwd()+'/webpack.config.js');
+            this.userWebpackConfig = require(process.cwd()+'/webpack.config.js');
         }
     }
 
@@ -55,21 +55,26 @@ class WebpackTask extends Elixir.Task {
         this.recordStep('Transforming ES2015 to ES5');
         this.recordStep('Writing Source Maps');
 
-        return gulpWebpack(extend({
-            watch: Elixir.isWatching(),
-            devtool: Elixir.config.sourcemaps ? 'eval-cheap-module-source-map' : '',
-            output: {
-                filename: this.output.name
-            },
-            module: {
-                loaders: Elixir.config.js.webpack.loaders
-            },
-            babel: Elixir.config.js.webpack.babel || {},
-            stats: {
-                assets: false,
-                version: false
-            }
-        }, this.webpackConfig, this.options), require('webpack'));
+        return gulpWebpack(this.mergeConfig(), require('webpack'));
+    }
+
+
+    /**
+     * Merge the Webpack config.
+     *
+     * @return {object}
+     */
+    mergeConfig() {
+        let defaultConfig = {
+            output: { filename: this.output.name }
+        };
+
+        return extend(
+            defaultConfig,
+            Elixir.webpack.config,
+            this.userWebpackConfig,
+            this.options
+        );
     }
 }
 

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import WebpackTask from './WebpackTask';
 
 /*
@@ -11,11 +12,27 @@ import WebpackTask from './WebpackTask';
  |
  */
 
-Elixir.config.js.webpack = {
-    loaders: [
-        { test: /\.js$/, loader: 'buble' }
-    ],
-    babel: {}
+Elixir.webpack = {
+    config: {
+        watch: Elixir.isWatching(),
+        devtool: Elixir.config.sourcemaps ? 'eval-cheap-module-source-map' : '',
+        module: {
+            loaders: [{ test: /\.js$/, loader: 'buble' }]
+        },
+        babel: {},
+        stats: {
+            assets: false,
+            version: false
+        }
+    },
+
+    mergeConfig(newConfig) {
+        return this.config = _.mergeWith(this.config, newConfig, (objValue, srcValue) => {
+            if (_.isArray(objValue)) {
+                return objValue.concat(srcValue);
+            }
+        });
+    }
 };
 
 
