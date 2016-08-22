@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {extend} from 'underscore';
+import {extend} from 'lodash';
 
 let gulpWebpack;
 
