@@ -15,6 +15,10 @@ import WebpackTask from './WebpackTask';
 Elixir.webpack = {
     config: {
         watch: Elixir.isWatching(),
+        watchOptions: {
+            poll: true,
+            aggregateTimeout: 500
+        },
         devtool: Elixir.config.sourcemaps ? 'eval-cheap-module-source-map' : '',
         module: {
             loaders: [{ test: /\.js$/, loader: 'buble' }]
