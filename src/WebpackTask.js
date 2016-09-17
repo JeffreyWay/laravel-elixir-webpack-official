@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {extend} from 'lodash';
+import {mergeWith, isArray} from 'lodash';
 
 let gulpWebpack;
 
@@ -68,12 +68,17 @@ class WebpackTask extends Elixir.Task {
         let defaultConfig = {
             output: { filename: this.output.name }
         };
-
-        return extend(
+        
+        return mergeWith(
             defaultConfig,
             Elixir.webpack.config,
             this.userWebpackConfig,
-            this.options
+            this.options,
+            (objValue, srcValue) => {
+                if (isArray(objValue)) {
+                    return objValue.concat(srcValue);
+                }
+            }
         );
     }
 }
