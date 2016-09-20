@@ -24,7 +24,7 @@
     "buble": "^0.12.3",
     "buble-loader": "^0.2.2",
     "lodash": "^4.15.0",
-    "webpack": "^2.1.0-beta.15",
+    "webpack": "2.1.0-beta.15 - 2.1.0-beta.22",
     "webpack-stream": "^3.2.0"
   },
   "devDependencies": {
