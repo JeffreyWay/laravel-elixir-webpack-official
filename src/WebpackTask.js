@@ -1,5 +1,6 @@
 import fs from 'fs';
 import {mergeWith, isArray} from 'lodash';
+import filter from 'gulp-filter';
 
 let gulpWebpack;
 
@@ -35,13 +36,16 @@ class WebpackTask extends Elixir.Task {
      * Build up the Gulp task.
      */
     gulpTask() {
+        const jsFiles = filter(['**/*.js'], {restore: true});
         return (
             gulp
             .src(this.src.path)
             .pipe(this.webpack())
             .on('error', this.onError())
+            .pipe(jsFiles)
             .pipe(this.minify())
             .on('error', this.onError())
+            .pipe(jsFiles.restore)
             .pipe(this.saveAs(gulp))
             .pipe(this.onSuccess())
         );
