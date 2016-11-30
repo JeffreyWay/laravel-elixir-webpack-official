@@ -23,6 +23,7 @@
   "dependencies": {
     "buble": "^0.12.3",
     "buble-loader": "^0.2.2",
+    "gulp-filter": "^4.0.0",
     "lodash": "^4.15.0",
     "webpack": "2.1.0-beta.15 - 2.1.0-beta.22",
     "webpack-stream": "github:jeroennoten/webpack-stream#patch-1"
